@@ -5,8 +5,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
-
 public class StringTwoTest {
 
     private StringTwo string2;
@@ -16,7 +14,7 @@ public class StringTwoTest {
         string2 = new StringTwo();
     }
 
-    @DataProvider(name = "doubleCharData")
+    @DataProvider(name = "doubleChar")
     public Object[][] doubleCharData() {
         return new  Object[][] {
                 { "The", "TThhee" },
@@ -25,7 +23,7 @@ public class StringTwoTest {
     }
 
 
-    @DataProvider(name = "countHiData")
+    @DataProvider(name = "countHi")
     public Object[][] countHiData() {
         return new  Object[][] {
                 { "abc hi ho", 1 },
@@ -33,7 +31,7 @@ public class StringTwoTest {
                 { "hihi", 2 } };
     }
 
-    @DataProvider(name = "catDogData")
+    @DataProvider(name = "catDog")
     public Object[][] catDogData() {
         return new  Object[][] {
                 { "catdog", true },
@@ -41,7 +39,7 @@ public class StringTwoTest {
                 { "1cat1cadodog", true } };
     }
 
-    @DataProvider(name = "countCodeData")
+    @DataProvider(name = "countCode")
     public Object[][] countCodeData() {
         return new  Object[][] {
                 { "aaacodebbb", 1 },
@@ -49,7 +47,7 @@ public class StringTwoTest {
                 { "cozexxcope", 2 } };
     }
 
-    @DataProvider(name = "endOtherData")
+    @DataProvider(name = "endOther")
     public Object[][] endOtherData() {
         return new  Object[][] {
                 { "Hiabc", "abc", true },
@@ -57,7 +55,7 @@ public class StringTwoTest {
                 { "abc", "abXabc", true } };
     }
 
-    @DataProvider(name = "xyzThereData")
+    @DataProvider(name = "xyzThere")
     public Object[][] xyzThereData() {
         return new  Object[][] {
                 { "abcxyz", true },
@@ -66,7 +64,7 @@ public class StringTwoTest {
                 { "abc.xyzxyz", true}};
     }
 
-    @DataProvider(name = "bobThereData")
+    @DataProvider(name = "bobThere")
     public Object[][] bobThereData(){
         return new Object[][]{
                 {"abcbob", true},
@@ -75,7 +73,7 @@ public class StringTwoTest {
         };
     }
 
-    @DataProvider(name = "mixStringData")
+    @DataProvider(name = "mixString")
     public Object[][] mixStringData(){
         return new Object[][]{
                 {"abc", "xyz", "axbycz"},
@@ -84,7 +82,7 @@ public class StringTwoTest {
         };
     }
 
-    @DataProvider(name = "xyBalanceData")
+    @DataProvider(name = "xyBalance")
     public Object[][] xyBalanceData(){
         return new Object[][]{
                 {"aaxbby", true},
@@ -93,57 +91,140 @@ public class StringTwoTest {
         };
     }
 
-    @Test(dataProvider = "countHiData", timeOut = 5000)
-    public void countHi(String str, int expected) {
+    @DataProvider(name = "repeatSeparator")
+    public Object[][] repeatSeparatorData(){
+        return new Object[][]{
+                {"Word","X", 3, "WordXWordXWord"},
+                {"This","And", 2, "ThisAndThis"},
+                {"This", "And", 1, "This"}
+        };
+    }
+
+    @DataProvider(name = "prefixAgain")
+    public Object[][] prefixAgainData(){
+        return new Object[][]{
+                {"abXYabc", 1, true},
+                {"abXYabc", 2, true},
+                {"abXYabc", 3, false}
+        };
+    }
+
+    @DataProvider(name = "xyzMiddle")
+    public Object[][] xyzMiddleData(){
+        return new Object[][]{
+                {"AAxyzBB", true},
+                {"AxyzBB", true},
+                {"AxyzBBB", false}
+        };
+    }
+
+    @DataProvider(name = "getSandwich")
+    public Object[][] getSandwichData(){
+        return new Object[][]{
+                {"breadjambread", "jam"},
+                {"xxbreadjambreadyy", "jam"},
+                {"xxbreadyy", ""}
+        };
+    }
+
+    @Test(dataProvider = "countHi", timeOut = 5000)
+    public void testCountHi(String str, int expected) {
         int result = string2.countHi(str);
         Assert.assertEquals(result, expected);
     }
 
-    @Test(dataProvider="catDogData", timeOut = 5000)
-    public void catDog(String str, boolean expected){
+    @Test(dataProvider="catDog", timeOut = 5000)
+    public void testCatDog(String str, boolean expected){
         boolean result = string2.catDog(str);
         Assert.assertEquals(result, expected);
     }
 
-    @Test(dataProvider="countCodeData", timeOut = 5000)
-    public void countCode(String str, int expected){
+    @Test(dataProvider="countCode", timeOut = 5000)
+    public void testCountCode(String str, int expected){
         int result = string2.countCode(str);
         Assert.assertEquals(result, expected);
     }
 
-    @Test(dataProvider="doubleCharData", timeOut = 5000)
-    public void doubleChar(String str, String expected){
+    @Test(dataProvider="doubleChar", timeOut = 5000)
+    public void testDoubleChar(String str, String expected){
         String result = string2.doubleChar(str);
         Assert.assertEquals(result, expected);
     }
 
-    @Test(dataProvider="endOtherData", timeOut = 5000)
-    public void endOtherData(String a, String b, boolean expected){
+    @Test(dataProvider="endOther", timeOut = 5000)
+    public void testEndOtherData(String a, String b, boolean expected){
         boolean result = string2.endOther(a, b);
         Assert.assertEquals(result, expected);
     }
 
-    @Test(dataProvider="xyzThereData", timeOut = 5000)
-    public void xyzThere(String str, boolean expected) {
+    @Test(dataProvider="xyzThere", timeOut = 5000)
+    public void testXyzThere(String str, boolean expected) {
         boolean result = string2.xyzThere(str);
         Assert.assertEquals(result, expected);
     }
 
-    @Test(dataProvider = "bobThereData")
-    public void bobThere(String str, boolean expected) {
+    @Test(dataProvider = "bobThere")
+    public void testBobThere(String str, boolean expected) {
         boolean result = string2.bobThere(str);
         Assert.assertEquals(result, expected);
     }
 
-    @Test(dataProvider = "mixStringData")
-    public void mixString(String a, String b, String expected) {
+    @Test(dataProvider = "mixString")
+    public void testMixString(String a, String b, String expected) {
         String result = string2.mixString(a, b);
         Assert.assertEquals(result, expected);
     }
 
-    @Test(dataProvider = "xyBalanceData")
-    public void xyBalance(String str, boolean expected){
+    @Test(dataProvider = "xyBalance")
+    public void testXyBalance(String str, boolean expected){
         boolean result = string2.xyBalance(str);
         Assert.assertEquals(result, expected);
+    }
+
+    @Test(dataProvider = "repeatSeparator")
+    public void testRepeatSeparator(String word, String separator, int count, String expected) throws Exception {
+        String result = string2.repeatSeparator(word, separator, count);
+        Assert.assertEquals(result, expected);
+    }
+
+    @Test(dataProvider = "prefixAgain")
+    public void testPrefixAgain(String str, int n, boolean expected) throws Exception {
+        boolean result = string2.prefixAgain(str, n);
+        Assert.assertEquals(result, expected);
+    }
+
+    @Test
+    public void testXyzMiddle() throws Exception {
+
+    }
+
+    @Test
+    public void testGetSandwich() throws Exception {
+
+    }
+
+    @Test
+    public void testSameStarChar() throws Exception {
+
+    }
+
+    @Test
+    public void testZipZap() throws Exception {
+
+    }
+
+    @Test
+    public void testStarOut() throws Exception {
+
+    }
+
+    @Test
+    public void testPlusOut() throws Exception {
+
+    }
+
+    @Test
+    public void testWordEnds() throws Exception {
+
     }
 }

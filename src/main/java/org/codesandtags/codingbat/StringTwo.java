@@ -209,4 +209,108 @@ public class StringTwo {
         }
         return isBalance;
     }
+
+    /**
+     * Given two strings, word and a separator, return a big string made of
+     * count occurences of the word, separated by the separator string.
+     * @param word
+     * @param sep
+     * @param count
+     * @return String
+     */
+    public String repeatSeparator(String word, String sep, int count) {
+        return "";
+    }
+
+    /**
+     * Given a string, consider the prefix string made of the first N chars of the string.
+     * Does that prefix string appear somewhere else in the string? Assume that the string
+     * is not empty and that N is in the range 1..str.length().
+     * @param str
+     * @param n
+     * @return boolean
+     */
+    public boolean prefixAgain(String str, int n) {
+        return false;
+    }
+
+    /**
+     * Given a string, does "xyz" appear in the middle of the string? To define middle,
+     * we'll say that the number of chars to the left and right of the "xyz" must differ
+     * by at most one. This problem is harder than it looks.
+     * @param str
+     * @return
+     */
+    public boolean xyzMiddle(String str) {
+        return false;
+    }
+
+    /**
+     * A sandwich is two pieces of bread with something in between. Return the string
+     * that is between the first and last appearance of "bread" in the given string,
+     * or return the empty string "" if there are not two pieces of bread.
+     * @param str
+     * @return
+     */
+    public String getSandwich(String str) {
+        return "";
+    }
+
+    /**
+     * Returns true if for every '*' (star) in the string, if there are chars both
+     * immediately before and after the star, they are the same.
+     * @param str
+     * @return
+     */
+    public boolean sameStarChar(String str) {
+        return false;
+    }
+
+    /**
+     * Look for patterns like "zip" and "zap" in the string -- length-3, starting
+     * with 'z' and ending with 'p'. Return a string where for all such words,
+     * the middle letter is gone, so "zipXzap" yields "zpXzp".
+     * @param str
+     * @return
+     */
+    public String zipZap(String str) {
+        return "";
+    }
+
+    /**
+     * Return a version of the given string, where for every star (*) in the string
+     * the star and the chars immediately to its left and right are gone. So "ab*cd"
+     * yields "ad" and "ab**cd" also yields "ad".
+     * @param str
+     * @return
+     */
+    public String starOut(String str) {
+        return "";
+    }
+
+    /**
+     *Given a string and a non-empty word string, return a version of the original
+     * String where all chars have been replaced by pluses ("+"), except for
+     * appearances of the word string which are preserved unchanged
+     * @param str
+     * @param word
+     * @return
+     */
+    public String plusOut(String str, String word) {
+        return "";
+    }
+
+    /**
+     * Given a string and a non-empty word string, return a string made of each
+     * char just before and just after every appearance of the word in the string.
+     * Ignore cases where there is no char before or after the word, and a char may
+     * be included twice if it is between two words.
+     * @param str
+     * @param word
+     * @return
+     */
+    public String wordEnds(String str, String word) {
+        return "";
+    }
+
 }
