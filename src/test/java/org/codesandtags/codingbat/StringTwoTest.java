@@ -91,6 +91,24 @@ public class StringTwoTest {
         };
     }
 
+    @DataProvider(name = "repeatEnd")
+    public Object[][] repeatEndData(){
+        return new Object[][]{
+                {"Hello", 3, "llollollo"},
+                {"Hello", 2, "lolo"},
+                {"Hello", 1, "o"}
+        };
+    }
+
+    @DataProvider(name = "repeatFront")
+    public Object[][] repeatFrontData(){
+        return new Object[][]{
+                {"Chocolate", 4, "ChocChoChC"},
+                {"Chocolate", 3, "ChoChC"},
+                {"Ice Cream", 2, "IcI"}
+        };
+    }
+
     @DataProvider(name = "repeatSeparator")
     public Object[][] repeatSeparatorData(){
         return new Object[][]{
@@ -226,5 +244,17 @@ public class StringTwoTest {
     @Test
     public void testWordEnds() throws Exception {
 
+    }
+
+    @Test(dataProvider = "repeatEnd")
+    public void testRepeatEnd(String str, int n, String expected) throws Exception {
+        String result = string2.repeatEnd(str, n);
+        Assert.assertEquals(result, expected);
+    }
+
+    @Test(dataProvider = "repeatFront")
+    public void testRepeatFront(String str, int n, String expected) throws Exception {
+        String result = string2.repeatFront(str, n);
+        Assert.assertEquals(result, expected);
     }
 }

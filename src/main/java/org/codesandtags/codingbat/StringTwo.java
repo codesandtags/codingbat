@@ -179,7 +179,6 @@ public class StringTwo {
         return result;
     }
 
-
     /**
      * We'll say that a String is xy-balanced if for all the 'x' chars
      * in the string, there exists a 'y' char somewhere later in the string. So
@@ -208,6 +207,43 @@ public class StringTwo {
             }
         }
         return isBalance;
+    }
+
+    /**
+     * Given a string and an int N, return a string made of N repetitions of the last N
+     * characters of the string. You may assume that N is between 0 and the length of
+     * the string, inclusive.
+     * @param str
+     * @param n
+     * @return String
+     */
+    public String repeatEnd(String str, int n) {
+        String result = "";
+        if(str.length() >= n){
+            for(int i = 0; i < n; i++){
+                result += str.substring( (str.length() - n), str.length() );
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Given a string and an int n, return a string made of the first n characters of the
+     * string, followed by the first n-1 characters of the string, and so on. You may assume
+     * that n is between 0 and the length of the string, inclusive
+     * (i.e. n >= 0 and n <= str.length()).
+     * @param str
+     * @param n
+     * @return String
+     */
+    public String repeatFront(String str, int n) {
+        String result = "";
+        if(n <= str.length() ){
+            for(int i=0; i < n; i++){
+                result += str.substring(0,n - i);
+            }
+        }
+        return result;
     }
 
     /**
