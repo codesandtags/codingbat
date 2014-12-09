@@ -87,7 +87,10 @@ public class StringTwoTest {
         return new Object[][]{
                 {"aaxbby", true},
                 {"aaxbb", false},
-                {"yaaxbb", false}
+                {"yaaxbb", false},
+                {"bbb", true},
+                {"xyxyx", false},
+                {"", true}
         };
     }
 
@@ -256,39 +259,46 @@ public class StringTwoTest {
         Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testXyzMiddle() throws Exception {
-
+    @Test(dataProvider = "xyzMiddle")
+    public void testXyzMiddle(String str, boolean expected) throws Exception {
+        boolean result = string2.xyzMiddle(str);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testGetSandwich() throws Exception {
-
+    @Test(dataProvider = "getSandwich")
+    public void testGetSandwich(String str, String expected) throws Exception {
+        String result = string2.getSandwich(str);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testSameStarChar() throws Exception {
-
+    @Test(dataProvider = "sameStarChar")
+    public void testSameStarChar(String str, boolean expected) throws Exception {
+        boolean result = string2.sameStarChar(str);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testZipZap() throws Exception {
-
+    @Test(dataProvider = "zipZap")
+    public void testZipZap(String str, String expected) throws Exception {
+        String result = string2.zipZap(str);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testStarOut() throws Exception {
-
+    @Test(dataProvider = "starOut")
+    public void testStarOut(String str, String expected) throws Exception {
+        String result = string2.starOut(str);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testPlusOut() throws Exception {
-
+    @Test(dataProvider = "plusOut")
+    public void testPlusOut(String str, String word, String expected) throws Exception {
+        String result = string2.plusOut(str, word);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testWordEnds() throws Exception {
-
+    @Test(dataProvider = "wordEnds")
+    public void testWordEnds(String str, String word, String expected) throws Exception {
+        String result = string2.wordEnds(str, word);
+        Assert.assertEquals(result, expected);
     }
 
     @Test(dataProvider = "repeatEnd")

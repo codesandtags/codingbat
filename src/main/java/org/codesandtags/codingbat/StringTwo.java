@@ -189,24 +189,20 @@ public class StringTwo {
      * @return
      */
     public boolean xyBalance(String str) {
-        if(!str.contains("x")){
-            return true;
-        }
-        boolean isBalance   = false;
-        boolean isX         = false;
+        if(!str.contains("x")) return true;
+        boolean isY = false;
+        boolean isX = false;
         for (int i = 0; i < str.length(); i++) {
-            if(str.charAt(i) == 'x' && (i+1) < str.length()){
+            if( ((i+1) == str.length() && str.charAt(i) == 'x') ){
                 isX = true;
-                continue;
-            }
-            if(isX && str.charAt(i) == 'y'){
-                isBalance = true;
-                isX = false;
+                isY = false;
             }else if(str.charAt(i) == 'x'){
-                isBalance = false;
+                isX = true;
+            }else if(str.charAt(i) == 'y' && isX){
+                isY = true;
             }
         }
-        return isBalance;
+        return isX && isY;
     }
 
     /**
