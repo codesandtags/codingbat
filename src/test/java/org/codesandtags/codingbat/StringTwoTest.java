@@ -145,6 +145,51 @@ public class StringTwoTest {
         };
     }
 
+    @DataProvider(name = "sameStarChar")
+    public Object[][] sameStarCharData(){
+        return new Object[][]{
+                {"xy*yzz", true},
+                {"xy*zzz", false},
+                {"*xa*az", true}
+        };
+    }
+
+    @DataProvider(name = "zipZap")
+    public Object[][] zipZapData(){
+        return new Object[][]{
+                {"zipXzap", "zpXzp"},
+                {"zopzop", "zpzp"},
+                {"zzzopzop", "zzzpzp"}
+        };
+    }
+
+    @DataProvider(name = "starOut")
+    public Object[][] starOutData(){
+        return new Object[][]{
+                {"ab*cd", "ad"},
+                {"ab**cd", "ad"},
+                {"sm*eilly", "silly"}
+        };
+    }
+
+    @DataProvider(name = "plusOut")
+    public Object[][] plusOutData(){
+        return new Object[][]{
+                {"12xy34", "xy", "++xy++"},
+                {"12xy34", "1", "1+++++"},
+                {"12xy34xyabcxy", "xy", "++xy++xy+++xy"}
+        };
+    }
+
+    @DataProvider(name = "wordEnds")
+    public Object[][] wordEndsData(){
+        return new Object[][]{
+                {"abcXY123XYijk", "XY", "c13i"},
+                {"XY123XY", "XY", "13"},
+                {"XY1XY", "XY", "11"}
+        };
+    }
+
     @Test(dataProvider = "countHi", timeOut = 5000)
     public void testCountHi(String str, int expected) {
         int result = string2.countHi(str);

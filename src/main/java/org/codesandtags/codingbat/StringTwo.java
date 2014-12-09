@@ -255,7 +255,13 @@ public class StringTwo {
      * @return String
      */
     public String repeatSeparator(String word, String sep, int count) {
-        return "";
+        String result = "";
+        for(int i = 0; i<count; i++){
+            result = result.concat(word);
+            if(i != (count - 1) )
+                result = result.concat(sep);
+        }
+        return result;
     }
 
     /**
@@ -267,7 +273,8 @@ public class StringTwo {
      * @return boolean
      */
     public boolean prefixAgain(String str, int n) {
-        return false;
+        String prefix = str.substring(0, n);
+        return str.indexOf(prefix, n) != -1;
     }
 
     /**
