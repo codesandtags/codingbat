@@ -144,7 +144,9 @@ public class StringTwoTest {
         return new Object[][]{
                 {"breadjambread", "jam"},
                 {"xxbreadjambreadyy", "jam"},
-                {"xxbreadyy", ""}
+                {"xxbreadyy", ""},
+                {"xxbreadbreadjambreadyy", "breadjam"},
+                {"breadbreadbreadbread", "breadbread"}
         };
     }
 

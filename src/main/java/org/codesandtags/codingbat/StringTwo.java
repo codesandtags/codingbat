@@ -1,5 +1,8 @@
 package org.codesandtags.codingbat;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by Edwin on 08/12/2014.
  */
@@ -292,7 +295,13 @@ public class StringTwo {
      * @return
      */
     public String getSandwich(String str) {
-        return "";
+        int first = str.indexOf("bread");
+        int end   = str.lastIndexOf("bread");
+        String result = "";
+        if(first != end){
+            result = str.substring(first + 5, end);
+        }
+        return result;
     }
 
     /**
