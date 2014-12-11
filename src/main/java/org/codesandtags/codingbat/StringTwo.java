@@ -284,6 +284,21 @@ public class StringTwo {
      * @return
      */
     public boolean xyzMiddle(String str) {
+        int size = str.length();
+        int midd = (size % 2 == 0)? size/2-1 : (size+1)/2-1;
+
+        if(size < 3)
+            return false;
+
+        if (size > midd)
+            return (str.charAt(midd) == 'y' &&
+                    str.charAt(midd - 1) == 'x' &&
+                    str.charAt(midd + 1) == 'z') ||
+                    (str.charAt(midd) == 'x' &&
+                            str.charAt(midd + 1) == 'y' &&
+                            str.charAt(midd + 2) == 'z' &&
+                            size / 2 - midd == 1);
+
         return false;
     }
 
@@ -311,7 +326,16 @@ public class StringTwo {
      * @return
      */
     public boolean sameStarChar(String str) {
-        return false;
+        if (str.length() == 0 || str.equals("*"))
+            return true;
+
+        boolean isStart = true;
+
+        for(int i = 1; i < str.length() - 1; i++){
+            if(str.charAt(i) == '*')
+                isStart = str.charAt(i-1) == str.charAt(i+1);
+        }
+        return isStart;
     }
 
     /**
@@ -337,7 +361,7 @@ public class StringTwo {
     }
 
     /**
-     *Given a string and a non-empty word string, return a version of the original
+     * Given a string and a non-empty word string, return a version of the original
      * String where all chars have been replaced by pluses ("+"), except for
      * appearances of the word string which are preserved unchanged
      * @param str
@@ -345,7 +369,21 @@ public class StringTwo {
      * @return
      */
     public String plusOut(String str, String word) {
-        return "";
+        String result = "";
+        for(int i = 0; i < str.length(); i++){
+            if(i + word.length() <= str.length()){
+                String portion = str.substring(i, i + word.length());
+                if(portion.equals(word)){
+                    result = result.concat(word);
+                    i += word.length() - 1;
+                }else{
+                    result = result.concat("+");
+                }
+            }else{
+                result = result.concat("+");
+            }
+        }
+        return result;
     }
 
     /**
