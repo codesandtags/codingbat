@@ -41,6 +41,78 @@ public class StringOneTest {
                 { "hippo", "i", "h" } };
     }
 
+    @DataProvider(name = "deFront")
+    public Object[][] deFrontData() {
+        return new  Object[][] {
+                { "Hello", "llo" },
+                { "java", "va" },
+                { "away", "aay" } };
+    }
+
+    @DataProvider(name = "without2")
+    public Object[][] without2Data() {
+        return new  Object[][] {
+                { "HelloHe", "lloHe" },
+                { "HelloHi", "HelloHi" },
+                { "Hi", "" } };
+    }
+
+    @DataProvider(name = "extraFront")
+    public Object[][] extraFrontData() {
+        return new  Object[][] {
+                { "Hello", "HeHeHe" },
+                { "ab", "ababab" },
+                { "H", "HHH" } };
+    }
+
+    @DataProvider(name = "minCat")
+    public Object[][] minCatData() {
+        return new  Object[][] {
+                { "Hello", "Hi", "loHi" },
+                { "Hello", "java", "ellojava" },
+                { "java", "Hello", "javaello" } };
+    }
+
+    @DataProvider(name = "frontAgain")
+    public Object[][] frontAgainData() {
+        return new  Object[][] {
+                { "edited", true },
+                { "edit", false },
+                { "ed", true} };
+    }
+
+    @DataProvider(name = "seeColor")
+    public Object[][] seeColorData() {
+        return new  Object[][] {
+                { "redxx", "red" },
+                { "xxred", "" },
+                { "blueTimes", "blue" } };
+    }
+
+    @DataProvider(name = "lastTwo")
+    public Object[][] lastTwoData() {
+        return new  Object[][] {
+                { "coding", "codign" },
+                { "cat", "cta" },
+                { "ab", "ba" } };
+    }
+
+    @DataProvider(name = "conCat")
+    public Object[][] conCatData() {
+        return new  Object[][] {
+                { "abc", "cat", "abcat" },
+                { "dog", "cat", "dogcat" },
+                { "abc", "", "abc" } };
+    }
+
+    @DataProvider(name = "lastChars")
+    public Object[][] lastCharsData() {
+        return new  Object[][] {
+                { "last", "chars", "ls" },
+                { "yo", "java", "ya" },
+                { "hi", "", "h@" } };
+    }
+
     @Test
     public void testHelloName() throws Exception {
 
@@ -146,49 +218,58 @@ public class StringOneTest {
 
     }
 
-    @Test
-    public void testLastChars() throws Exception {
-
+    @Test(dataProvider = "lastChars")
+    public void testLastChars(String a, String b, String expected) throws Exception {
+        String result = stringOne.lastChars(a, b);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testConCat() throws Exception {
-
+    @Test(dataProvider = "conCat")
+    public void testConCat(String a, String b, String expected) throws Exception {
+        String result = stringOne.conCat(a, b);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testLastTwo() throws Exception {
-
+    @Test(dataProvider = "lastTwo")
+    public void testLastTwo(String str , String expected) throws Exception {
+        String result = stringOne.lastTwo(str);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testSeeColor() throws Exception {
-
+    @Test(dataProvider = "seeColor")
+    public void testSeeColor(String str, String expected) throws Exception {
+        String result = stringOne.seeColor(str);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testFrontAgain() throws Exception {
-
+    @Test(dataProvider = "frontAgain")
+    public void testFrontAgain(String str, boolean expected) throws Exception {
+        boolean result = stringOne.frontAgain(str);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testMinCat() throws Exception {
-
+    @Test(dataProvider = "minCat")
+    public void testMinCat(String a, String b, String expected) throws Exception {
+        String result = stringOne.minCat(a, b);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testExtraFront() throws Exception {
-
+    @Test(dataProvider = "extraFront")
+    public void testExtraFront(String str, String expected) throws Exception {
+        String result = stringOne.extraFront(str);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testWithout2() throws Exception {
-
+    @Test(dataProvider = "without2")
+    public void testWithout2(String str, String expected) throws Exception {
+        String result = stringOne.without2(str);
+        Assert.assertEquals(result, expected);
     }
 
-    @Test
-    public void testDeFront() throws Exception {
-
+    @Test(dataProvider = "deFront")
+    public void testDeFront(String str, String expected) throws Exception {
+        String result = stringOne.deFront(str);
+        Assert.assertEquals(result, expected);
     }
 
     @Test(dataProvider = "startWord")
